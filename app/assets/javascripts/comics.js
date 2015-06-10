@@ -43,7 +43,7 @@ $(document).ready(function(){
 
 			for (var j = 0; j < numberOfPanels; j++){
 
-				$(".panelRow").eq(i).append("<div class='panel'></div>");
+				$(".panelRow").eq(i).append("<div class='panel'><p></p></div>");
 
 				var panelWidth = ($(".panelRow").width() / numberOfPanels)-5;
 				$(".panel").css('width', panelWidth);
@@ -53,14 +53,28 @@ $(document).ready(function(){
 		};
 
 		$(".panel").css('height', panelHeight);
-
+		addDroppableToPanel();
 	});
 
-	$("body select").msDropDown();
 
 	$("#title").on("click", function(){
 		$(this).text("");
 	});
+
+	$( ".scene" ).draggable({
+	    	helper: "clone",
+	    	revert: "invalid"
+	    });
+	
+	function addDroppableToPanel() {
+		console.log("funcionó!")
+
+	    $( ".panel" ).droppable({
+	    	drop: function( event, ui ) {
+	    		$(this).find("p");
+	    	}
+	    });
+	}
 
 
 });
