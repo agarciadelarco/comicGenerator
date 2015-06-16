@@ -69,7 +69,9 @@ $(document).ready(function(){
 	    	accept: ".scene",
 	    	tolerance: "fit",
 	    	drop: function(event, ui) {
-	    	  	$(this).append($(ui.draggable).clone());
+	    		var srcImg = $(ui.draggable).clone().attr("src");
+	    		var urlImg = "url("+srcImg+")";
+	    	  	$(this).css("background-image", urlImg);
 	    	}
 	    	   		
 	    });
