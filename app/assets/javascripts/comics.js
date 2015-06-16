@@ -43,10 +43,7 @@ $(document).ready(function(){
 
 			for (var j = 0; j < numberOfPanels; j++){
 
-				$(".panelRow").eq(i).append("<div class='panel'><p></p></div>");
-
-				var panelWidth = ($(".panelRow").width() / numberOfPanels)-5;
-				$(".panel").css('width', panelWidth);
+				$(".panelRow").eq(i).append("<div class='panel'></div>");
 
 			};			
 
@@ -61,20 +58,21 @@ $(document).ready(function(){
 		$(this).text("");
 	});
 
-	$( ".scene" ).draggable({
-	    	helper: "clone",
-	    	revert: "invalid"
-	    });
+	$(".scene").draggable({
+    	helper: "clone",
+    	revert: "invalid",
+
+    });
 	
-	function addDroppableToPanel() {
-		console.log("funcionó!")
-
-	    $( ".panel" ).droppable({
-	    	drop: function( event, ui ) {
-	    		$(this).find("p");
+	function addDroppableToPanel(){
+	    $(".panel").droppable({
+	    	accept: ".scene",
+	    	tolerance: "fit",
+	    	drop: function(event, ui) {
+	    	  	$(this).append($(ui.draggable).clone());
 	    	}
+	    	   		
 	    });
-	}
-
+	};
 
 });
