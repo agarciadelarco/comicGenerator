@@ -72,9 +72,12 @@ $(document).ready(function(){
 	    		var srcImg = $(ui.draggable).clone().attr("src");
 	    		var urlImg = "url("+srcImg+")";
 	    	  	$(this).css("background-image", urlImg);
-	    	}
-	    	   		
+	    	}	   		
 	    });
 	};
+
+	$("#page").on("click", ".panel", function(){
+		$(this).css("background-image", "none");
+	})
 
 });
