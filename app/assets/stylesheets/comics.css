@@ -7,15 +7,20 @@ body {
 	z-index: 1;
 }
 
-#up div {
+.character {
+	width: 50px;
+	z-index: 2;
+}
+
+.up div {
 	display: inline-block;
 }
 
-#med div {
+.med div {
 	display: inline-block;
 }
 
-#down div {
+.down div {
 	display: inline-block;
 }
 
@@ -52,4 +57,10 @@ body {
     flex:1;
     background-position: center center;
 	background-size: cover;
+
+}
+
+.panel .character, .mondonguer {
+	height: 75%;
+	width: auto;
 }

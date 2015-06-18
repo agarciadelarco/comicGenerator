@@ -60,19 +60,37 @@ $(document).ready(function(){
 
 	$(".scene").draggable({
     	helper: "clone",
-    	revert: "invalid",
+    	revert: "invalid"
+    });
 
+    $(".character").draggable({
+    	helper: "clone",
+    	revert: "invalid"
     });
 	
 	function addDroppableToPanel(){
 	    $(".panel").droppable({
-	    	accept: ".scene",
-	    	tolerance: "fit",
+	    	accept: ".scene, .character",
+
 	    	drop: function(event, ui) {
-	    		var srcImg = $(ui.draggable).clone().attr("src");
-	    		var urlImg = "url("+srcImg+")";
-	    	  	$(this).css("background-image", urlImg);
-	    	}	   		
+	    		if ($(ui.draggable).hasClass('scene')){
+					var srcImg = $(ui.draggable).clone().attr("src");
+					var urlImg = "url("+srcImg+")";
+				  	$(this).css("background-image", urlImg);
+				}else{
+		    		/*if ((".panel .character")==="none"){*/
+		    			$newChar = $(ui.draggable).clone()
+		    			$(this).append($newChar);
+			    		//};
+			    	$newChar.toggleClass("character");
+			    	$newChar.addClass("mondonguer");
+			    	var currentPanel = $(this)
+	    			$newChar.draggable({
+			    		containment: currentPanel
+	
+					});
+				}
+	    	}
 	    });
 	};
 
