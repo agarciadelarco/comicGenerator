@@ -67,28 +67,35 @@ $(document).ready(function(){
     	helper: "clone",
     	revert: "invalid"
     });
+
+    $(".bubble").draggable({
+    	helper: "clone",
+    	revert: "invalid"
+    });
 	
 	function addDroppableToPanel(){
 	    $(".panel").droppable({
-	    	accept: ".scene, .character",
+	    	accept: ".scene, .character, .bubble",
 
 	    	drop: function(event, ui) {
 	    		if ($(ui.draggable).hasClass('scene')){
 					var srcImg = $(ui.draggable).clone().attr("src");
 					var urlImg = "url("+srcImg+")";
 				  	$(this).css("background-image", urlImg);
-				}else{
-		    		/*if ((".panel .character")==="none"){*/
-		    			$newChar = $(ui.draggable).clone()
-		    			$(this).append($newChar);
-			    		//};
+				}else if($(ui.draggable).hasClass('character')){
+	    			$newChar = $(ui.draggable).clone()
+	    			$(this).append($newChar);
 			    	$newChar.toggleClass("character");
-			    	$newChar.addClass("mondonguer");
+			    	$newChar.addClass("characterClone");
 			    	var currentPanel = $(this)
-	    			$newChar.draggable({
-			    		containment: currentPanel
-	
-					});
+	    			$newChar.draggable();
+				}else{
+					$newBub = $(ui.draggable).clone()
+	    			$(this).append($newBub);
+			    	$newBub.toggleClass("bubble");
+			    	$newBub.addClass("bubbleClone");
+			    	var currentPanel = $(this)
+	    			$newBub.draggable();
 				}
 	    	}
 	    });

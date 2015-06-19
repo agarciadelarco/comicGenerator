@@ -12,6 +12,11 @@ body {
 	z-index: 2;
 }
 
+.bubble {
+	width: 50px;
+	z-index: 3;
+}
+
 .up div {
 	display: inline-block;
 }
@@ -57,10 +62,15 @@ body {
     flex:1;
     background-position: center center;
 	background-size: cover;
-
+	overflow: hidden;
 }
 
-.panel .character, .mondonguer {
+.panel .character, .characterClone {
 	height: 75%;
+	width: auto;
+}
+
+.panel .bubble, .bubbleClone {
+	height: 30%;
 	width: auto;
 }
