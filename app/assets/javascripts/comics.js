@@ -63,46 +63,51 @@ $(document).ready(function(){
     	revert: "invalid"
     });
 
-    $(".character").draggable({
+    $(".char").draggable({
     	helper: "clone",
     	revert: "invalid"
     });
 
-    $(".bubble").draggable({
+    $(".bub").draggable({
     	helper: "clone",
     	revert: "invalid"
     });
 	
 	function addDroppableToPanel(){
 	    $(".panel").droppable({
-	    	accept: ".scene, .character, .bubble",
+	    	accept: ".scene, .char, .bub",
 
 	    	drop: function(event, ui) {
 	    		if ($(ui.draggable).hasClass('scene')){
 					var srcImg = $(ui.draggable).clone().attr("src");
 					var urlImg = "url("+srcImg+")";
 				  	$(this).css("background-image", urlImg);
-				}else if($(ui.draggable).hasClass('character')){
+				  	
+				}else if($(ui.draggable).hasClass('char')){
 	    			$newChar = $(ui.draggable).clone()
 	    			$(this).append($newChar);
-			    	$newChar.toggleClass("character");
+			    	$newChar.toggleClass("char");
 			    	$newChar.addClass("characterClone");
 			    	var currentPanel = $(this)
 	    			$newChar.draggable();
+	    			$newChar.append("<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
+	    			$("#page").on("click", ".close", function(){
+						$(this).parent().remove()
+					});
 				}else{
 					$newBub = $(ui.draggable).clone()
 	    			$(this).append($newBub);
-			    	$newBub.toggleClass("bubble");
+			    	$newBub.toggleClass("bub");
 			    	$newBub.addClass("bubbleClone");
 			    	var currentPanel = $(this)
 	    			$newBub.draggable();
+	    			$newBub.append("<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
+	    			$("#page").on("click", ".close", function(){
+						$(this).parent().remove()
+					});
 				}
 	    	}
 	    });
 	};
-
-	$("#page").on("click", ".panel", function(){
-		$(this).css("background-image", "none");
-	})
 
 });

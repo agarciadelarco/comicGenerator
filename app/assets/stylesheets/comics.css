@@ -15,17 +15,10 @@ body {
 .bubble {
 	width: 50px;
 	z-index: 3;
+	/*display: inline-block;*/
 }
 
-.up div {
-	display: inline-block;
-}
-
-.med div {
-	display: inline-block;
-}
-
-.down div {
+.up div, .med div, .down div {
 	display: inline-block;
 }
 
@@ -65,12 +58,40 @@ body {
 	overflow: hidden;
 }
 
-.panel .character, .characterClone {
-	height: 75%;
-	width: auto;
+.characterClone button {
+	display: inline-block;
+ 	width: 10%;
 }
 
-.panel .bubble, .bubbleClone {
-	height: 30%;
-	width: auto;
+.characterClone {
+	height: 75%;
+ 	width: auto;
 }
+
+.panel .characterClone .character {
+	height: 100%;
+	width: 90%;
+}
+
+.bubbleClone button {
+	display: inline-block;
+ 	width: 10%;
+}
+
+.bubbleClone {
+	height: 30%;
+	width: 45%;
+}
+
+.panel .bubbleClone .bubble{
+	height: 100%;
+	width: 90%;
+}
+/*
+.close{
+	display: none;
+}
+
+.panel .bubbleClone:hover .close{
+	display: block;
+}*/
