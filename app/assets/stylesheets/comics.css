@@ -2,6 +2,10 @@ body {
 	background-color: cadetblue;
 }
 
+#remove{
+	height: 35px;
+}
+
 .scene {
 	width: 50px;
 	z-index: 1;
@@ -15,7 +19,6 @@ body {
 .bubble {
 	width: 50px;
 	z-index: 3;
-	/*display: inline-block;*/
 }
 
 .up div, .med div, .down div {
@@ -58,40 +61,12 @@ body {
 	overflow: hidden;
 }
 
-.characterClone button {
-	display: inline-block;
- 	width: 10%;
-}
-
 .characterClone {
 	height: 75%;
  	width: auto;
 }
 
-.panel .characterClone .character {
-	height: 100%;
-	width: 90%;
-}
-
-.bubbleClone button {
-	display: inline-block;
- 	width: 10%;
-}
-
 .bubbleClone {
 	height: 30%;
-	width: 45%;
+	width: auto;
 }
-
-.panel .bubbleClone .bubble{
-	height: 100%;
-	width: 90%;
-}
-/*
-.close{
-	display: none;
-}
-
-.panel .bubbleClone:hover .close{
-	display: block;
-}*/

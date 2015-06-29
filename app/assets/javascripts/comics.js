@@ -53,6 +53,10 @@ $(document).ready(function(){
 		addDroppableToPanel();
 	});
 
+	$("#remove").on("click", function removeElements(){
+		
+	});
+
 
 	$("#title").on("click", function(){
 		$(this).text("");
@@ -63,19 +67,19 @@ $(document).ready(function(){
     	revert: "invalid"
     });
 
-    $(".char").draggable({
+    $(".character").draggable({
     	helper: "clone",
     	revert: "invalid"
     });
 
-    $(".bub").draggable({
+    $(".bubble").draggable({
     	helper: "clone",
     	revert: "invalid"
     });
 	
 	function addDroppableToPanel(){
 	    $(".panel").droppable({
-	    	accept: ".scene, .char, .bub",
+	    	accept: ".scene, .character, .bubble",
 
 	    	drop: function(event, ui) {
 	    		if ($(ui.draggable).hasClass('scene')){
@@ -83,28 +87,22 @@ $(document).ready(function(){
 					var urlImg = "url("+srcImg+")";
 				  	$(this).css("background-image", urlImg);
 				  	
-				}else if($(ui.draggable).hasClass('char')){
+				}else if($(ui.draggable).hasClass('character')){
 	    			$newChar = $(ui.draggable).clone()
 	    			$(this).append($newChar);
-			    	$newChar.toggleClass("char");
+			    	$newChar.toggleClass("character");
 			    	$newChar.addClass("characterClone");
 			    	var currentPanel = $(this)
 	    			$newChar.draggable();
-	    			$newChar.append("<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
-	    			$("#page").on("click", ".close", function(){
-						$(this).parent().remove()
-					});
+	    		
 				}else{
 					$newBub = $(ui.draggable).clone()
 	    			$(this).append($newBub);
-			    	$newBub.toggleClass("bub");
+			    	$newBub.toggleClass("bubble");
 			    	$newBub.addClass("bubbleClone");
 			    	var currentPanel = $(this)
 	    			$newBub.draggable();
-	    			$newBub.append("<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
-	    			$("#page").on("click", ".close", function(){
-						$(this).parent().remove()
-					});
+	    			
 				}
 	    	}
 	    });
