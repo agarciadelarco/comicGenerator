@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	var isDestroyingClick = false;
 
 	$("#submitRows").on("click", function() {
 
@@ -53,11 +54,6 @@ $(document).ready(function(){
 		addDroppableToPanel();
 	});
 
-	$("#remove").on("click", function removeElements(){
-		
-	});
-
-
 	$("#title").on("click", function(){
 		$(this).text("");
 	});
@@ -108,4 +104,27 @@ $(document).ready(function(){
 	    });
 	};
 
+	$("#remove").on("click", function removeElements(){
+		isDestroyingClick = !isDestroyingClick;
+		console.log("Borrar", isDestroyingClick);
+		$('body').css("cursor", "url:(/Privacy-Eraser-Free-logo.png)");
+	});
+
+	$("#page").on("click", ".panel", function(){
+		if( isDestroyingClick)
+			$(this).css("background-image", "none");
+	});
+
+	$("#page").on("click", ".characterClone", function(e){
+		if( isDestroyingClick)
+			$(this).remove()
+	});
+
+	$("#page").on("click", ".bubbleClone", function(e){
+		if( isDestroyingClick)
+			$(this).remove()
+	});
+
 });
+
+
