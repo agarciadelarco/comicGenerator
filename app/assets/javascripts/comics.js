@@ -32,7 +32,7 @@ $(document).ready(function(){
 		$(".panelRow").css('height', panelHeight);
 	});
 
-	$("#parameters").on("click", "#submitPanels", function() {
+	$("#left").on("click", "#submitPanels", function() {
 
 		$('.panelRow').empty();
 
@@ -106,23 +106,26 @@ $(document).ready(function(){
 
 	$("#remove").on("click", function removeElements(){
 		isDestroyingClick = !isDestroyingClick;
-		console.log("Borrar", isDestroyingClick);
-		$('body').css("cursor", "url:(/Privacy-Eraser-Free-logo.png)");
+		//console.log("Borrar", isDestroyingClick);
+		//$('body').css("cursor", "url:(/Privacy-Eraser-Free-logo.png)");
 	});
 
-	$("#page").on("click", ".panel", function(){
-		if( isDestroyingClick)
+	$("#page").on("click", ".panel", function(e){
+		if(isDestroyingClick)
 			$(this).css("background-image", "none");
+		e.stopPropagation();
 	});
 
 	$("#page").on("click", ".characterClone", function(e){
-		if( isDestroyingClick)
+		if(isDestroyingClick)
 			$(this).remove()
+		e.stopPropagation();
 	});
 
 	$("#page").on("click", ".bubbleClone", function(e){
-		if( isDestroyingClick)
+		if(isDestroyingClick)
 			$(this).remove()
+		e.stopPropagation();
 	});
 
 });

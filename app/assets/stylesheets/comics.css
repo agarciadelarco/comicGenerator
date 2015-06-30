@@ -1,5 +1,25 @@
+header{
+	text-align: center;
+	margin-bottom: 50px;
+}
+
 body {
-	background-color: cadetblue;
+	background-image: url(/notebook_texture2463.jpg);
+}
+/*
+.container{
+	/*width: 100%;
+}
+
+/*
+#left{
+	float: left;
+}
+*/
+.center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #remove{
@@ -26,12 +46,13 @@ body {
 }
 
 #page {
-	position: absolute;
+	/*position: absolute;*/
 	background-color: white;
-	width: 420px;
-	height: 594px;
-	right: 160px;
-	top: 32px;
+	width: 390px;
+	height: 551.57px;
+	/*margin-left: 80px;
+	/*left: 80px;
+	/*top: 32px*/
 }
 
 .title {
@@ -43,7 +64,7 @@ body {
 }
 
 #pageContent {
-	height: 524px;
+	height: 481.57px;
 	padding-bottom: 5px;
 }
 
