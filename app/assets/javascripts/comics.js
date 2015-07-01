@@ -1,5 +1,14 @@
 $(document).ready(function(){
+
 	var isDestroyingClick = false;
+	var clickedTab = $(".tabs > .active");
+	var tabWrapper = $(".tab__content");
+	var activeTab = tabWrapper.find(".active");
+	var activeTabHeight = activeTab.outerHeight();
+	
+	activeTab.show();
+	
+	tabWrapper.height(activeTabHeight);
 
 	$("#submitRows").on("click", function() {
 
@@ -18,16 +27,16 @@ $(document).ready(function(){
 			$("#panelContainer").append(
 				"<div id='choosePanels'>"+
 					"<label for='columns'>Number of panels in row number " +(i + 1)+ "</label><br>"+
-					"<select id='columns"+i+"'>" +
+					"<select id='columns"+i+"' class='form-control'>" +
 						"<option value='1'>1</option>" +
 						"<option value='2'>2</option>" +
 						"<option value='3'>3</option>" +
 						"<option value='4'>4</option>" +
 					"</select>" +
-				"</div>");
+				"</div><br>");
 		};
 
-		$("#panelContainer").append("<button id='submitPanels'>Gimme panels!</button>");
+		$("#panelContainer").append("<button id='submitPanels' class='btn btn-primary'>Gimme panels!</button>");
 
 		$(".panelRow").css('height', panelHeight);
 	});
@@ -52,6 +61,68 @@ $(document).ready(function(){
 
 		$(".panel").css('height', panelHeight);
 		addDroppableToPanel();
+	});
+
+	$(".tabs > li").on("click", function() {
+		
+		// Remove class from active tab
+		$(".tabs > li").removeClass("active");
+		
+		// Add class active to clicked tab
+		$(this).addClass("active");
+		
+		// Update clickedTab variable
+		clickedTab = $(".tabs .active");
+		
+		// fade out active tab
+		activeTab.fadeOut(100, function() {
+			
+			// Remove active class all tabs
+			$(".tab__content > li").removeClass("active");
+			
+			// Get index of clicked tab
+			var clickedTabIndex = clickedTab.index();
+
+			// Add class active to corresponding tab
+			$(".tab__content > li").eq(clickedTabIndex).addClass("active");
+			
+			// update new active tab
+			activeTab = $(".tab__content > .active");
+			
+			// Update variable
+			activeTabHeight = activeTab.outerHeight();
+			
+			// Animate height of wrapper to new tab height
+			tabWrapper.stop().delay(1).animate({
+				height: activeTabHeight
+			}, 1, function() {
+				
+				// Fade in active tab
+				activeTab.delay(1).fadeIn(1);
+				
+			});
+		});
+	});
+	
+	// Variables
+	var colorButton = $(".colors li");
+	
+	colorButton.on("click", function(){
+		
+		// Remove class from currently active button
+		$(".colors > li").removeClass("active-color");
+		
+		// Add class active to clicked button
+		$(this).addClass("active-color");
+		
+		// Get background color of clicked
+		var newColor = $(this).attr("data-color");
+		
+		// Change background of everything with class .bg-color
+		$(".bg-color").css("background-color", newColor);
+		
+		// Change color of everything with class .text-color
+		$(".text-color").css("color", newColor);
 	});
 
 	$("#title").on("click", function(){

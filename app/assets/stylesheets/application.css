@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+@font-face{
+	font-family: titlefont;
+	src: url("/Comix Loud.ttf");
+}
+
+@font-face{
+	font-family: regularfont;
+	src: url("/Comic Book.otf");
+}
