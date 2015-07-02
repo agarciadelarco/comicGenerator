@@ -177,8 +177,14 @@ $(document).ready(function(){
 
 	$("#remove").on("click", function removeElements(){
 		isDestroyingClick = !isDestroyingClick;
-		//console.log("Borrar", isDestroyingClick);
-		//$('body').css("cursor", "url:(/Privacy-Eraser-Free-logo.png)");
+		console.log("Borrar", isDestroyingClick);
+		if (isDestroyingClick){
+			$('body').css("cursor", "url('/boma.png'), auto");
+			$('#eraser').append("<div id='eraseMessage'>To stop deleting things just push me again</div>");
+		}else{
+			$('body').css("cursor", "default");
+			$('#eraseMessage').remove();
+		}
 	});
 
 	$("#page").on("click", ".panel", function(e){
@@ -198,6 +204,17 @@ $(document).ready(function(){
 			$(this).remove()
 		e.stopPropagation();
 	});
+
+	$("#genComic").on("click", function(){
+		html2canvas($("#page"), {
+		  	onrendered: function(canvas) {
+		  		var img = canvas.toDataURL("image/png");
+		  		var open = window.open("","","width=400, height=600");
+		  		open.document.write("<div><img id='img'></div><a href='/path/to/image.png' download='AwesomeImage.png'><button id='saveComic' class='btn btn-primary'>Save Comic!</button></a>");
+		  		open.document.getElementById('img').setAttribute("src", img);
+  			}
+		});
+	})
 
 });
 
